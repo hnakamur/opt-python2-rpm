@@ -23,11 +23,10 @@
 %global with_debug_build 0
 
 %global pybasever 2.7
-%global pyver %{pybasever}.10
 
 Summary: An interpreted, interactive, object-oriented programming language
 Name: opt-python2
-Version: %{pyver}
+Version: 2.7.10
 Release: 1%{?dist}
 License: Python
 Group: Development/Languages
