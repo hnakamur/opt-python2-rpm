@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+
+install:
+  - docker build -t hnakamur/optpython2rpm .
+
+script:
+  - docker run hnakamur/optpython2rpm "$COPR_LOGIN" "$COPR_USERNAME" "$COPR_TOKEN"
