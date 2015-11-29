@@ -11,7 +11,7 @@ RUN yum -y install epel-release \
 ADD opt-python2.spec /root/rpmbuild/SPECS/
 ADD *.patch /root/rpmbuild/SOURCES/
 
-RUN version=`awk '$1=="Version:" {print $2}' /root/rpmbuild/SPECS/opt-python2.spec` \
+RUN version=2.7.10 \
  && curl -sL -o /root/rpmbuild/SOURCES/Python-${version}.tar.xz http://www.python.org/ftp/python/${version}/Python-${version}.tar.xz \
  && rpmbuild -bs /root/rpmbuild/SPECS/opt-python2.spec
 
