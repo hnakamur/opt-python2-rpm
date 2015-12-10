@@ -19,6 +19,6 @@ RUN chmod +x /root/rpmbuild/build-opt2-python2-srpm.sh
 #   /bin/sh: /root/rpmbuild/build-opt2-python2-srpm.sh: /bin/bash: bad interpreter: Text file busy
 RUN /root/rpmbuild/build-opt2-python2-srpm.sh
 
-ADD copr-build.sh /root/
-RUN chmod +x /root/copr-build.sh
-CMD ["/root/copr-build.sh"]
+ADD copr-build.sh /root/rpmbuild/
+RUN chmod +x /root/rpmbuild/copr-build.sh
+CMD ["/root/rpmbuild/copr-build.sh"]
