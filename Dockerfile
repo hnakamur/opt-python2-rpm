@@ -10,10 +10,15 @@ RUN yum -y install epel-release \
 
 ADD opt-python2.spec /root/rpmbuild/SPECS/
 ADD *.patch /root/rpmbuild/SOURCES/
+ADD build-opt2-python2-srpm.sh /root/rpmbuild/
 
-RUN version=2.7.10 \
- && curl -sL -o /root/rpmbuild/SOURCES/Python-${version}.tar.xz http://www.python.org/ftp/python/${version}/Python-${version}.tar.xz \
- && rpmbuild -bs /root/rpmbuild/SPECS/opt-python2.spec
+RUN chmod +x /root/rpmbuild/build-opt2-python2-srpm.sh
+# NOTE: I had to separate commands in two RUN's here.
+# RUN chmod +x /root/rpmbuild/build-opt2-python2-srpm.sh  && /root/rpmbuild/build-opt2-python2-srpm.sh
+# causes the following error:
+#   /bin/sh: /root/rpmbuild/build-opt2-python2-srpm.sh: /bin/bash: bad interpreter: Text file busy
+RUN /root/rpmbuild/build-opt2-python2-srpm.sh
 
 ADD copr-build.sh /root/
-ENTRYPOINT ["/bin/bash", "/root/copr-build.sh"]
+RUN chmod +x /root/copr-build.sh
+CMD ["/root/copr-build.sh"]
