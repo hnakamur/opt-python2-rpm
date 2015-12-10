@@ -33,7 +33,7 @@
 
 Summary: An interpreted, interactive, object-oriented programming language
 Name: opt-python2
-Version: 2.7.10
+Version: 2.7.11
 Release: 1%{?dist}
 License: Python
 Group: Development/Languages
